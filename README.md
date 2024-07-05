@@ -214,3 +214,54 @@ fn main() {
 
 ```
 
+
+# abstract class
+
+
+
+```rust
+
+
+// Trait für grundlegende mathematische Operationen
+pub trait AbstractClass<T> {
+    fn add(&self, other: T) -> T;
+    fn subtract(&self, other: T) -> T;
+    fn multiply(&self, other: T) -> T;
+    fn divide(&self, other: T) -> T;
+}
+
+// Implementierung des Traits für den Typ f64
+impl AbstractClass<f64> for f64 {
+    fn add(&self, other: f64) -> f64 {
+        self + other
+    }
+
+    fn subtract(&self, other: f64) -> f64 {
+        self - other
+    }
+
+    fn multiply(&self, other: f64) -> f64 {
+        self * other
+    }
+
+    fn divide(&self, other: f64) -> f64 {
+        self / other
+    }
+}
+
+// Beispielnutzung
+fn main() {
+    let a: f64 = 10.0;
+    let b: f64 = 2.0;
+
+    println!("Addition: {}", a.add(b));        // 12.0
+    println!("Subtraktion: {}", a.subtract(b)); // 8.0
+    println!("Multiplikation: {}", a.multiply(b)); // 20.0
+    println!("Division: {}", a.divide(b));     // 5.0
+}
+
+
+
+
+```
+
