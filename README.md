@@ -89,7 +89,7 @@ impl Class {
 }
 
 fn main() {
-    let my_class = struct_without_initial::Class::new();
+    let my_class = Class::new();
 
     let x = 10;
     let y = 5;
@@ -157,7 +157,7 @@ impl Class {
 
 
 fn main() {
-    let mut my_class = struct_with_set::Class::new();
+    let mut my_class = Class::new();
     
     // Set values for x and y
     my_class.set_x(10);
@@ -170,3 +170,47 @@ fn main() {
 }
 
 ```
+
+#  class ohne constructor
+
+
+```rust
+pub struct Class;
+
+impl Class {
+    pub fn add(x: i32, y: i32) -> i32 {
+        x + y
+    }
+
+    pub fn sub(x: i32, y: i32) -> i32 {
+        x - y
+    }
+
+    pub fn divide(x: i32, y: i32) -> i32 {
+        if y != 0 {
+            x / y
+        } else {
+            panic!("Division by zero error!")
+        }
+    }
+
+    pub fn multiply(x: i32, y: i32) -> i32 {
+        x * y
+    }
+}
+
+
+fn main() {
+    let x = 10;
+    let y = 5;
+    
+    println!("Add: {}", Class::add(x, y));
+    println!("Sub: {}", Class::sub(x, y));
+    println!("Divide: {}", Class::divide(x, y));
+    println!("Multiply: {}", Class::multiply(x, y));
+}
+
+
+
+```
+
