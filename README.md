@@ -265,3 +265,50 @@ fn main() {
 
 ```
 
+# list test
+
+
+
+```rust
+
+use std::any::Any; // Importieren der Any Trait aus dem Standardbibliothek
+
+fn main() {
+    let variables = create_variables(); // Variablen erzeugen
+    for var in variables { // Schleife über jede Variable
+        print_variable(&*var); // Variable ausgeben
+    }
+}
+
+fn create_variables() -> Vec<Box<dyn Any>> {
+    let mut variables: Vec<Box<dyn Any>> = Vec::new(); // Leere Vektor für verschiedene Datentypen
+
+    variables.push(Box::new(42i32));          // Integer hinzufügen
+    variables.push(Box::new(3.14f64));        // Float hinzufügen
+    variables.push(Box::new(true));           // Boolean hinzufügen
+    variables.push(Box::new('c'));            // Char hinzufügen
+    variables.push(Box::new("Hello, Rust!")); // String hinzufügen
+
+    variables // Vektor zurückgeben
+}
+
+fn print_variable(var: &dyn Any) {
+    if let Some(value) = var.downcast_ref::<i32>() { // Überprüfen und Ausgeben des Integer-Typs
+        println!("Integer: {}", value);
+    } else if let Some(value) = var.downcast_ref::<f64>() { // Überprüfen und Ausgeben des Float-Typs
+        println!("Float: {}", value);
+    } else if let Some(value) = var.downcast_ref::<bool>() { // Überprüfen und Ausgeben des Boolean-Typs
+        println!("Boolean: {}", value);
+    } else if let Some(value) = var.downcast_ref::<char>() { // Überprüfen und Ausgeben des Char-Typs
+        println!("Char: {}", value);
+    } else if let Some(value) = var.downcast_ref::<&str>() { // Überprüfen und Ausgeben des String-Typs
+        println!("String: {}", value);
+    } else {
+        println!("Unbekannter Typ"); // Wenn der Typ unbekannt ist
+    }
+}
+
+
+
+```
+
